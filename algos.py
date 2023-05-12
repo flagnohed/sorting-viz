@@ -2,17 +2,19 @@ import pygame
 
 def draw_lines(arr, screen, color):
     """ draws the lines to visualize the sorting """
-    y_start = 600
+    y_start = 700
+    x_start = 100
     screen.fill("black")
     for i in range (len(arr)):
-        x_pos = 100 + 5 * i
-        y_end = 600 - 3 * arr[i]
+        x_pos = x_start + 5 * i
+        y_end = y_start - 3 * arr[i]
         
         pygame.draw.line(screen, color, (x_pos, y_start), (x_pos, y_end))
     pygame.display.update()
 
 
 def is_sorted(arr):
+    """ used when figure should turn green when done sorting """
     return all(arr[i] <= arr[i+1] for i in range(len(arr) - 1))
 
 
@@ -74,8 +76,16 @@ def quicksort(arr):
 def heapsort(arr):
     pass
 
-def selectionsort(arr):
-    pass
+def selectionsort(arr, screen):
+    for i in range(len(arr)):
+        pygame.time.delay(50)  # slow it down to make it watchable
+        min_elem_idx = i  # index of smallest element in unsorted array
+        for j in range(i + 1, len(arr)):
+            if arr[min_elem_idx] > arr[j]:
+                min_elem_idx = j  # found new smallest element
+        arr[i], arr[min_elem_idx] = arr[min_elem_idx], arr[i]
+        draw_lines(arr, screen, "white")
+
 
 def insertionsort(arr, screen):
     for i in range(1, len(arr)):
@@ -87,16 +97,3 @@ def insertionsort(arr, screen):
             j -= 1
         arr[j + 1] = temp
         draw_lines(arr, screen, "white")
-
-
-# testing
-# test_array = [2, 4, 1, 7, 3, 6, 5]
-# print("bubblesort:  ", bubblesort(test_array))
-# print("bogosort:    ", bogosort(test_array))
-# print("mergesort:   ", mergesort(test_array))
-
-# merge
-# in: [2, 4, 1, 3]
-# left: [2, 4], right: [1, 3]
-
-
