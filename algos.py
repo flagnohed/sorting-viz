@@ -30,7 +30,6 @@ def bubblesort(arr, screen):
     draw_lines(arr, screen, (0, 255, 0))
 
 
-
 def mergesort(arr, screen):
 # todo: now, it only visualizes the current sublist, want to
 # show the whole array all the time.
@@ -77,6 +76,17 @@ def heapsort(arr):
 
 def selectionsort(arr):
     pass
+
+def insertionsort(arr, screen):
+    for i in range(1, len(arr)):
+        temp = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > temp:
+            arr[j + 1] = arr[j]
+            draw_lines(arr, screen, "white")
+            j -= 1
+        arr[j + 1] = temp
+        draw_lines(arr, screen, "white")
 
 
 # testing

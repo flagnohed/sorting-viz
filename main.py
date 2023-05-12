@@ -11,16 +11,17 @@ running = True
 fps = 60
 bg_color = "black"
 line_color = "white"
-sort_method = "bubblesort"
+sort_method = "insertionsort"
 
 # test arrays
-arr = [i for i in range(1, 100)]
+arr = [i for i in range(1, 200)]
 # arr = [5, 1, 2, 4, 3]
 # arr = [200, 50, 130, 90, 250, 61, 110, 88, 33, 80, 70, 159, 180, 20]
 
 # sorting methods
 methods = {"mergesort": algos.mergesort, 
-           "bubblesort": algos.bubblesort}
+           "bubblesort": algos.bubblesort,
+           "insertionsort": algos.insertionsort}
 
 def run_sort(method_key):
     methods[method_key](arr, screen)
