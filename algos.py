@@ -78,7 +78,7 @@ def heapsort(arr):
 
 def selectionsort(arr, screen):
     for i in range(len(arr)):
-        pygame.time.delay(50)  # slow it down to make it watchable
+        # pygame.time.delay(50)  # slow it down to make it watchable
         min_elem_idx = i  # index of smallest element in unsorted array
         for j in range(i + 1, len(arr)):
             if arr[min_elem_idx] > arr[j]:

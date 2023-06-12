@@ -1,56 +1,61 @@
 import pygame
 import random
 import algos
+from clickable_text import ClickableText
+from selection_sort import Sorter, SelectionSorter
 
-pygame.init()
-pygame.display.set_caption("Sorting visualizer")
-
-screen = pygame.display.set_mode((1280, 720))
-clock = pygame.time.Clock()
-running = True
-fps = 60
-bg_color = "black"
-line_color = "white"
-
-arr = [i for i in range(1, 200)]
-
-# sorting methods available
-methods = {
-        "mergesort": algos.mergesort, 
-        "bubblesort": algos.bubblesort,
-        "insertionsort": algos.insertionsort,
-        "selectionsort": algos.selectionsort
-        }
-
-chosen_method = "selectionsort"
-
-def run_sort(method_key):
-    methods[method_key](arr, screen)
-
-random.shuffle(arr)
-
-while running:
-    execute = False
-    pygame.time.delay(10)
-    keys = pygame.key.get_pressed()
-
-
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-    
-    if keys[pygame.K_SPACE]:
-        execute = True
-
-    if execute:
-        run_sort(chosen_method)
-        # algos.mergesort(arr, screen)
+def stationary_view(screen, bg_color, sorter):
+    screen.fill(bg_color)
+    if sorter.is_done():
+        sorter.draw((0, 255, 0), sorter.array)
     else:
-        screen.fill(bg_color)
-        algos.draw_lines(arr, screen, line_color)
+        sorter.draw((255, 255, 255), sorter.array)
+
+
+def main():
+    # variables
+    width = 1280
+    height = 720
+    running = True
+    fps = 60
+    bg_color = "black"
+    line_color = "white"
+
+    pygame.init()
+    pygame.display.set_caption("Sorting visualizer")
+    screen = pygame.display.set_mode((width, height))
+    clock = pygame.time.Clock()
+
+    sorter = SelectionSorter(screen)
+
+    while running:
+        execute = False
+        keys = pygame.key.get_pressed()
+
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    execute = True
+                if event.key == pygame.MOUSEBUTTONDOWN:
+                    # if clicked on button
+                        # do stuff
+                    pass
+
+        if execute:
+
+            execute = False
+            sorter.sort()
+
+        stationary_view(screen, bg_color, sorter) 
+   
+        pygame.display.flip()
         
+        clock.tick(fps)
 
-    pygame.display.flip()
-    clock.tick(fps)
+    pygame.quit()
 
-pygame.quit()
+if __name__ == "__main__":
+    main()

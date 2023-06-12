@@ -1,0 +1,9 @@
+* gör så att sorter_parent är parent class till alla sorts, https://www.w3schools.com/python/python_inheritance.asp
+* ändra arraystorlek och delay baserat på komplexitet 
+
+
+när vill man färglägga vad?
+
+
+vill färglägga current element
+vill färglägga de element som jämförs (comparison++)
