@@ -2,7 +2,7 @@ import pygame
 import random
 import algos
 from clickable_text import ClickableText
-from selection_sort import Sorter, SelectionSorter
+from selection_sort import Sorter, SelectionSorter, BubbleSorter
 
 def stationary_view(screen, bg_color, sorter):
     screen.fill(bg_color)
@@ -26,8 +26,8 @@ def main():
     screen = pygame.display.set_mode((width, height))
     clock = pygame.time.Clock()
 
-    sorter = SelectionSorter(screen)
-
+    # sorter = SelectionSorter(screen)
+    sorter = BubbleSorter(screen)
     while running:
         execute = False
         keys = pygame.key.get_pressed()

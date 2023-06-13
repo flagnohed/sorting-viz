@@ -7,3 +7,11 @@ när vill man färglägga vad?
 
 vill färglägga current element
 vill färglägga de element som jämförs (comparison++)
+
+Algoritmer:
+* Selection sort KLART
+* Gnome sort
+* Insertion sort
+* Merge sort
+* Quick sort
+* Bubble sort
